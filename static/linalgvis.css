@@ -1,0 +1,192 @@
+/*Generic tag styling*/
+
+html {
+	font-size: 16px;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+	line-height: 150%;
+	background-color: #f4f4f4;
+	display:table;
+	min-width:100%;
+}
+
+p {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 150%;
+	color: #333;
+}
+
+h3 {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 150%;
+	color: #333;
+	font-size: 28px;
+	font-weight: 600;
+}
+
+b {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 150%;
+	font-weight: 600;
+}
+
+
+input[type=submit] {
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+}
+
+/*Page format and content holder classes*/
+.page {
+    display: flex;
+    align-items: stretch;
+	background: #f4f4f4;
+}
+
+.content {
+    padding: 36px;
+	border-radius: 16px;
+	background: white;
+	margin-top: 16px;
+	margin-right: 8px;
+	margin-left: 8px;
+	box-shadow: 0px 1px 1px LightGray;
+}
+
+.col-md {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.indexPanel {
+	text-align: center;
+	margin-left: auto;
+	margin-top: 45vh;
+	margin-right: auto;
+}
+
+/*Labels for content panels*/
+.sectionLabel {
+	margin-top: -15px;
+	color: #AAA;
+}
+
+/*Navbar Styling classes*/
+.bgShadow {
+	box-shadow: 0px 1px 1px LightGray;
+	min-width:100%;
+}
+
+.navbarButton {
+	padding: 0px;
+}
+
+.navbarButton:hover {
+	color:#5083D5;
+}
+.navbarButton:active {
+	color:#4E7AC1;
+}
+	
+/*Menu Styling*/
+#mobileMenu {
+	display: none;
+}
+
+#sidebar {
+	font-family: 'Open Sans', sans-serif;
+	line-height: 228%;
+	min-width: 256px;
+	max-width: 256px;
+}
+
+#collapsibleSidebar{
+	padding-left: 0;
+	padding-top: 16px;
+}
+
+#topic {
+	font-size:16px;
+	color: #333;
+	font-weight:600;
+	padding-left: 24px;
+}
+
+#subtopicText {
+	font-size:14px;
+	color: #666;
+}
+
+#subtopicText:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+#subtopicContainer {
+	padding-left: 24px;
+}
+
+#subtopic:hover {
+	background-color: #e6e6e6;
+}
+
+#subtopic:active{
+    outline: none;
+	background-color: #e3e3e3;
+}
+
+#subtopicTextCurrent {
+	font-size:14px;
+	color: #666;
+	font-weight:600;
+}
+
+#subtopicTextCurrent:hover {
+	text-decoration: none;
+}
+
+/*Content holder*/
+#moduleContentPanel {
+	margin-right: 0px;
+}
+
+/*Current page label*/
+#headCurrentPage {
+	font-family: 'Open Sans', sans-serif;
+	color: #666;
+	font-weight:600;
+	margin-left:-4px;
+	margin-top:3px;
+	font-size:14px;
+}
+
+/*Index page styling*/
+#indexMDContainer {
+	margin-left: -256px;
+}
+
+#indexTitle {
+	font-family: 'Open Sans', sans-serif;
+	font-weight:600;
+	color: #333;
+	text-align: center;
+	font-size: 36px;
+}
+
+#indexSubtitle {
+	font-family: 'Open Sans', sans-serif;
+	font-weight:600;
+	color: #666;
+	text-align: center;
+	font-size: 16px;
+}
+
+/*Points navbar text*/
+#points {
+	color: #FFF;
+}
+
+	

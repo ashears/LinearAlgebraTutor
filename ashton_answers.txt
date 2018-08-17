@@ -1,0 +1,45 @@
+Requires ALL answers to be correct
+Linear equations: 
+	1. A,B,E,F
+	2.C
+Intro to Matrices:
+	1. A,B,C
+	2. A,C
+Intro to Vectors:
+	1. A,C,D
+Matrix Operations:
+	1. x = 12, y = 16
+	2. x = 0, y = 15
+Row-Reduced Echelon Form:
+	1. A
+	2. 3
+Determinant of Matrices:
+	1. A (-22)
+Matrix Multiplication:
+	1. e
+	2. none
+Inverting Matrices:
+	1. e
+	2. j
+	3. none
+Transpose of a Matrix:
+	1. d
+	2. w,y
+Vector Operations:
+	1. h
+	2. y
+Linear Combinations:
+	1. w
+Inner products of Vectors:
+	1. d(-6)
+	2. d(-26)
+Orthogonality:
+	1. a,d
+	2. o
+Steady State Vectors:
+	Unimplemented
+Eigenvalues:
+	1. b,d
+Characteristic Equation:
+	1. a,c
+

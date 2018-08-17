@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>LinearAlgebraTutor</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- LinAlgVis CSS -->
+  <link href="{{ url_for('static', filename='linalgvis.css') }}" rel="stylesheet">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- ResponsiveBootstrapToolkit -->
+  <script src="{{ url_for('static', filename='bootstrap-toolkit.min.js') }}" />
+
+  <!-- mpld3: for graphing -->
+  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+  <script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.1.js"></script>
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["$$","$$"],["\\(","\\)"]]}
+  });
+  </script>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+  <!-- Show/Hide Mobile Menu -->
+  <script>
+	(function($, document, window, viewport){
+		$(window).resize(
+			viewport.changed(function(){
+				checkButton();
+			})
+		);
+
+		function checkButton() {
+			if( viewport.is(">md") ) {
+				var menu = document.getElementById("mobileMenu");
+				menu.style.display = "none";
+			}
+		}
+
+	})(jQuery, document, window, ResponsiveBootstrapToolkit);
+
+	function toggleMenu() {
+		var menu = document.getElementById("mobileMenu");
+		if (menu.style.display === "none") {
+			menu.style.display = "block";
+		} else {
+			menu.style.display = "none";
+		}
+	}
+  </script>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark bgShadow">
+	<!-- Title -->
+    <a class="navbar-brand  navbarButton" href="/">LinearAlgebraTutor</a>
+	<!-- Display current topic  -->
+    <div class="collapse navbar-collapse" id="headCurrentPage">
+	  {% for topic in nav %}
+	    {% for item in topic.Items %}
+		  {% if item.Current %}
+		    {{item.Name}}
+		  {% endif %}
+		{% endfor %}
+	  {% endfor %}
+    </div>
+	<!-- Points/Help/Mobile Menu Button -->
+	<div style="float: right;">
+	  <b id="points">{{head.Points}}&nbsp;&nbsp;<i class="fas fa-star"></i></b>&nbsp;&nbsp;
+      <a href="/help" class="navbarButton" id="points"><i class="fas fa-question navbarButton"></i></a>
+	  <button onclick="toggleMenu();" class="navbar-toggler navbarButton" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation" id="toggleIcon">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+	</div>
+  </nav>
+
+  <div id="mobileMenu" style="display: none;">
+	  <!-- Mobile Menu -->
+	  <table style="margin-top:10px;width:100%;">
+		{% for topic in nav %}
+		  <tr><td id="topic">{{topic.Topic}}</td><tr>
+		  {% for item in topic.Items %}
+			<tr id="subtopic">
+			  <td id="subtopicContainer">
+				{% if item.Current %}
+				  <a href="{{item.URL}}" id="subtopicTextCurrent">{{item.Name}}{% if item.Complete %}&nbsp;&nbsp;<i class="fas fa-check"></i>{% endif %}</a>
+				{% else %}
+				  <a href="{{item.URL}}" id="subtopicText">{{item.Name}}{% if item.Complete %}&nbsp;&nbsp;<i class="fas fa-check"></i>{% endif %}</a>
+				{% endif %}
+			  </td>
+			</tr>
+		  {% endfor %}
+		{% endfor %}
+	  </table>
+  </div>
+
+
+  <div class="page">
+
+    <!-- Navigation Side Bar -->
+    <div class="d-none d-md-block" id="sidebar">
+      <nav class="navbar-expand-md collapsibleSidebar">
+        <div class="collapse navbar-collapse collapsibleSidebar" id="navbarsExample03">
+          <table style="margin-top:10px;width:100%;">
+            {% for topic in nav %}
+			  <tr><td id="topic">{{topic.Topic}}</td><tr>
+			  {% for item in topic.Items %}
+                <tr id="subtopic">
+				  <td id="subtopicContainer">
+				    {% if item.Current %}
+					  <a href="{{item.URL}}" id="subtopicTextCurrent">{{item.Name}}{% if item.Complete %}&nbsp;&nbsp;<i class="fas fa-check"></i>{% endif %}</a>
+					{% else %}
+				      <a href="{{item.URL}}" id="subtopicText">{{item.Name}}{% if item.Complete %}&nbsp;&nbsp;<i class="fas fa-check"></i>{% endif %}</a>
+					{% endif %}
+			      </td>
+				</tr>
+              {% endfor %}
+			{% endfor %}
+          </table>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Learning Module Content -->
+    <div class="row" id="moduleContentPanel">
+	  <div class="col-md">
+		<div class="content">
+		    <div class="sectionLabel"><b>Description</b></div>
+		    {{ page.Description|safe }}
+		</div>
+		<div class="content">
+		    <div class="sectionLabel"><b>Resources</b></div>
+		  {{ page.Resources|safe }}
+	    </div>
+	  </div>
+		<div class="col-md">
+		  <div class="content">
+		      <div class="sectionLabel"><b>Try it now!</b></div>
+		    {{page.Visualization|safe}}
+		  </div>
+	  </div>
+    </div>
+
+
+
+
+  </div>
+
+</body>
+</html>
